@@ -6,6 +6,8 @@ env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 
+env.read_env(ROOT_DIR)
+environ.Env.read_env()
 
 APP_DIR = ROOT_DIR / "core_apps"
 
@@ -30,11 +32,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
 ]
 
-LOCAL_APPS = [
-    "core_apps.profiles",
-    "core_apps.users",
-    "core_apps.common",
-]
+LOCAL_APPS = ["core_apps.profiles", "core_apps.users", "core_apps.common"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -81,7 +79,7 @@ WSGI_APPLICATION = "authorAPI.authorAPI.wsgi.application"
 #     }
 # }
 
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {"default": env.db("DATABASE_URL", default="sqlite:///my_database.sqlite3")}
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",

@@ -1,0 +1,7 @@
+# Ensure Unix-style (LF) line endings for all files
+* text=auto eol=lf
+
+# Specific file types
+*.sh text eol=lf
+*.py text eol=lf
+
