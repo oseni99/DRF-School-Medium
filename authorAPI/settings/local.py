@@ -11,3 +11,11 @@ SECRET_KEY = env(
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
+
+
+EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
+EMAIL_HOST = env("EMAIL_HOST", default="localhost")
+EMAIL_PORT = env("EMAIL_PORT", default=25)
+DEFAULT_FROM_EMAIL = "kingosenitosin@gmail.com"
+DOMAIN = env("DOMAIN", default="localhost:8000")
+SITE_NAME = "Campus Voice"
